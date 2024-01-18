@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Email Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #email-container {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #generate-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Email Generator</h1>
+    
+    <button id="generate-btn" onclick="generateRandomEmail()">Gerar E-mail Aleatório</button>
+    
+    <div id="email-container">
+        <!-- O e-mail gerado será exibido aqui -->
+    </div>
+
+    <script>
+        function generateRandomEmail() {
+            var username = generateRandomString(8);
+            var email = username + '@scalaseguros.com.br';
+
+            document.getElementById('email-container').innerText = 'Seu e-mail aleatório é: ' + email;
+        }
+
+        function generateRandomString(length) {
+            var characters = '1234567890';
+            var randomString = '';
+            for (var i = 0; i < length; i++) {
+                randomString += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return randomString;
+        }
+    </script>
+</body>
+</html>
