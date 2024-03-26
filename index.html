@@ -21,6 +21,19 @@
             font-size: 16px;
             cursor: pointer;
         }
+
+        #email-input {
+            width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        #copy-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -29,7 +42,8 @@
     <button id="generate-btn" onclick="generateRandomEmail()">Gerar E-mail Aleatório</button>
     
     <div id="email-container">
-        <!-- O e-mail gerado será exibido aqui -->
+        <input type="text" id="email-input" readonly>
+        <button id="copy-btn" onclick="copyToClipboard()">Copiar</button>
     </div>
 
     <script>
@@ -37,7 +51,7 @@
             var username = generateRandomString(10);
             var email = 'naotememail.' + username + '@scalaseguros.com.br';
 
-            document.getElementById('email-container').innerText = 'Seu e-mail aleatório é: ' + email;
+            document.getElementById('email-input').value = email;
         }
 
         function generateRandomString(length) {
@@ -47,6 +61,14 @@
                 randomString += characters.charAt(Math.floor(Math.random() * characters.length));
             }
             return randomString;
+        }
+
+        function copyToClipboard() {
+            var copyText = document.getElementById("email-input");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* Para dispositivos móveis */
+            document.execCommand("copy");
+            alert("E-mail copiado para a área de transferência: " + copyText.value);
         }
     </script>
 </body>
